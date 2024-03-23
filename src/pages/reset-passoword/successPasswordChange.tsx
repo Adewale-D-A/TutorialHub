@@ -95,7 +95,7 @@ const SuccessPasswordChange = ({
                       </p>
                       <Link
                         to="/"
-                        className=" text-primary_green-500 p-2 px-4 text-lg font-semibold rounded-md bg-white border-2 border-gray-300 hover:bg-primary_green-500 hover:text-white  transition-all"
+                        className=" text-primary-500 p-2 px-4 text-lg font-semibold rounded-md bg-white border-2 border-gray-300 hover:bg-primary-500 hover:text-white  transition-all"
                       >
                         Login
                       </Link>

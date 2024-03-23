@@ -1,9 +1,11 @@
-import { useState } from "react";
-import RequestTable from "../../components/requestTable";
-import MainLayout from "../../layouts/mainLayout";
+import { useCallback, useState } from "react";
+import DatePicker from "react-datepicker";
 
-import tableDatasetAll from "../../assets/requestTableAll.json";
-import CreateNewRequestModal from "../../components/createRequest";
+import "react-datepicker/dist/react-datepicker.css";
+import MainLayout from "../../layouts/mainLayout";
+import meetingRecordData from "../../assets/meetingRecordData.json";
+import MeetingsRecordTable from "./meentingRecordTable";
+import Search from "../../components/filterAndSearch/search";
 
 const breadCrumb = [
   {
@@ -23,178 +25,139 @@ const breadCrumb = [
   },
 ];
 function Dashboard() {
-  const [openNewRequestModal, setOpenNewRequestModal] = useState(false);
+  const [startDate, setStartDate] = useState(new Date());
+
+  const onDateChange = useCallback((dates: any) => {
+    setStartDate(dates);
+  }, []);
+
   return (
     <MainLayout breadCrumb={breadCrumb}>
-      <main className="">
-        <div className=" relative w-full">
-          <div>
-            <div className={`bg-gradient w-full h-60 flex`}>
-              <div className="bg-semi-circle-left h-full w-full"></div>
-              <div className="bg-semi-circle-right h-full w-full opacity-30"></div>
-            </div>
-            <div className=" bg-white h-20 w-full"></div>
-          </div>
-          <div className=" absolute top-0 left-0 w-full h-full p-5 md:p-10 text-white">
-            <div className="w-full flex flex-col items-center justify-center">
-              <div className="max-w-screen-2xl w-full flex justify-between gap-5 items-center">
-                <div>
-                  <h3 className=" text-2xl md:text-3xl font-semibold">
-                    Federal University of Technology, Minna
-                  </h3>
-                  <p>Gidan Kwano, Minna, Niger State</p>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => setOpenNewRequestModal(true)}
-                  className=" text-primary_green-500 text-sm bg-white rounded-lg px-5 py-3 hover:bg-primary_green-500 hover:text-white transition-all"
+      <main className="w-full flex gap-5 px-5 md:px-10 py-10">
+        <section className="w-full flex-[.7] flex flex-col gap-5">
+          <div className=" w-full grid grid-cols-1 md:grid-cols-3 justify-center gap-4 items-stretch flex-wrap">
+            {[
+              {
+                id: 1,
+                label: "Tutees",
+                icon: (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="w-8 h-8 text-secondary-500"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z"
+                    />
+                  </svg>
+                ),
+                value: 50,
+              },
+              {
+                id: 2,
+                label: "Meetings",
+                icon: (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="w-8 h-8 text-[#12B76A]"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M6.429 9.75 2.25 12l4.179 2.25m0-4.5 5.571 3 5.571-3m-11.142 0L2.25 7.5 12 2.25l9.75 5.25-4.179 2.25m0 0L21.75 12l-4.179 2.25m0 0 4.179 2.25L12 21.75 2.25 16.5l4.179-2.25m11.142 0-5.571 3-5.571-3"
+                    />
+                  </svg>
+                ),
+                value: 115,
+              },
+              {
+                id: 3,
+                label: "Your Rating",
+                icon: (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="w-8 h-8 text-[#F79009]"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z"
+                    />
+                  </svg>
+                ),
+                value: 8,
+              },
+            ].map((item) => {
+              return (
+                <div
+                  key={item?.id}
+                  className="w-full justify-between bg-white flex items-center rounded-md text-dark-500 p-5 shadow-md border"
                 >
-                  Create New Request
-                </button>
-              </div>
-            </div>
-            <div className=" flex justify-center mt-10">
-              <div className=" max-w-screen-lg w-full grid grid-cols-1 md:grid-cols-3 justify-center gap-4 items-stretch flex-wrap">
-                {[
-                  {
-                    id: 1,
-                    label: "Programmes",
-                    icon: (
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        strokeWidth={1.5}
-                        stroke="currentColor"
-                        className="w-6 h-6"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"
-                        />
-                      </svg>
-                    ),
-                    value: 54,
-                    subSection: [
-                      {
-                        id: 1.1,
-                        value: 5,
-                        label: "Delisted",
-                      },
-                    ],
-                  },
-                  {
-                    id: 2,
-                    label: "Faculties",
-                    icon: (
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        strokeWidth={1.5}
-                        stroke="currentColor"
-                        className="w-6 h-6"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5"
-                        />
-                      </svg>
-                    ),
-                    value: 12,
-                    subSection: [
-                      {
-                        id: 2.1,
-                        value: 3,
-                        label: "Assigned",
-                      },
-                    ],
-                  },
-                  {
-                    id: 3,
-                    label: "Change Requests",
-                    icon: (
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        strokeWidth={1.5}
-                        stroke="currentColor"
-                        className="w-6 h-6"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10"
-                        />
-                      </svg>
-                    ),
-                    value: 6,
-                    subSection: [
-                      {
-                        id: 3.1,
-                        value: 3,
-                        label: "Requirements",
-                      },
-                      {
-                        id: 3.2,
-                        value: 3,
-                        label: "DE-lists",
-                      },
-                    ],
-                  },
-                ].map((item) => {
-                  return (
-                    <div
-                      key={item?.id}
-                      className=" bg-white rounded-md text-dark-500 p-5 shadow-lg border"
-                    >
-                      <div>
-                        <div className=" flex items-center justify-between mb-5">
-                          <span className=" text-gray-800">{item?.label}</span>{" "}
-                          <span className=" p-2 bg-primary_green-500/40 text-primary_green-500 rounded-md">
-                            {item?.icon}
-                          </span>
-                        </div>
+                  <div className="flex flex-col gap-2">
+                    <span className=" text-gray-500">{item?.label}</span>{" "}
+                    {item?.id === 3 ? (
+                      <div className="flex items-start gap-1">
                         <h4 className=" text-5xl font-semibold mb-3">
                           {item?.value}
+                          <span className=" text-gray-300">/</span>{" "}
                         </h4>
-                        <div className=" flex justify-between w-full flex-wrap">
-                          {item?.subSection?.map((subSection) => {
-                            return (
-                              <div
-                                key={subSection?.id}
-                                className=" text-xs text-gray-700"
-                              >
-                                <span className=" font-semibold">
-                                  {subSection?.value}
-                                </span>{" "}
-                                <span>{subSection?.label}</span>
-                              </div>
-                            );
-                          })}
-                        </div>
+                        <span className=" text-gray-300 text-xl font-semibold">
+                          10
+                        </span>
                       </div>
-                    </div>
-                  );
-                })}
+                    ) : (
+                      <h4 className=" text-5xl font-semibold mb-3">
+                        {item?.value}
+                      </h4>
+                    )}
+                  </div>
+                  <span className=" p-3 bg-gray-200/20 text-secondary-500 rounded-full aspect-square border border-secondary-500/20">
+                    {item?.icon}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+          <div className=" grid grid-cols-1 md:grid-cols-2">
+            <div className="w-full border rounded-lg p-3"></div>
+            <div className="w-full border rounded-lg p-3"></div>
+          </div>
+          <div className="w-full border rounded-2xl">
+            <div className="flex items-center w-full justify-between px-3 my-4">
+              <h3 className=" text-3xl font-semibold">Meeting Records</h3>
+              <div className="">
+                <Search placeholder="Search" id="search" label="" />
               </div>
             </div>
+            <MeetingsRecordTable dataset={meetingRecordData} />
           </div>
-        </div>
-        <section className="w-full flex flex-col gap-10 items-center justify-center">
-          <div className="mt-[500px] md:mt-10 max-w-screen-2xl w-full px-5 md:px-10 h-full">
-            <h2 className=" text-2xl font-semibold">Most Recent Requests</h2>
-            <RequestTable dataset={tableDatasetAll} />
+        </section>
+        <section className="w-full flex-[.3] border rounded-lg p-3">
+          <h1>Section 2</h1>
+          <div>
+            <DatePicker
+              selected={startDate}
+              onChange={onDateChange}
+              startDate={startDate}
+              // selectsRange
+              inline
+            />
           </div>
         </section>
       </main>
-      <CreateNewRequestModal
-        openModal={openNewRequestModal}
-        setOpenModal={setOpenNewRequestModal}
-      />
     </MainLayout>
   );
 }

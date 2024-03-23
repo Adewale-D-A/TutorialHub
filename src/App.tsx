@@ -9,6 +9,7 @@ import ResetPassword from "./pages/reset-passoword";
 import ChangePassword from "./pages/reset-passoword/change-password";
 import SnackBar from "./components/snackbar";
 import { useAppSelector } from "./stores/hooks";
+import Chat from "./pages/chat";
 
 function App() {
   const { show, message, isError } = useAppSelector(
@@ -24,6 +25,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/notifications" element={<Notifications />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/chat" element={<Chat />} />
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route
             path="/change-password/:email/:otp"

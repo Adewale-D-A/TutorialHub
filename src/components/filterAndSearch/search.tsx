@@ -7,10 +7,6 @@ interface Props {
 export default function Search({ label, placeholder, id }: Props) {
   return (
     <div className="w-full">
-      <label htmlFor={id} className="font-semibold text-gray-700">
-        {label}
-      </label>
-      <br />
       <input
         id={id}
         placeholder={placeholder}

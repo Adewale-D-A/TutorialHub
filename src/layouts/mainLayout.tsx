@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import NotificationsMenu from "../pages/notifications/notificationMenu";
 import Loader from "../pages/loader";
 import MetaTags from "../components/metaTags";
+import ChatMenu from "../pages/chat/chatMenu";
 
 interface layoutProps {
   children: React.ReactNode;
@@ -74,11 +75,33 @@ function MainLayout({
                 </button>
               )}
               <div className="w-full flex justify-between p-5">
-                <h6 className=" font-semibold text-lg text-gray-700 w-full">
-                  {pageTitle}
-                </h6>
-                <div className="flex items-center gap-5 w-full justify-end">
-                  <div className=" relative group w-full flex justify-end cursor-pointer">
+                <div className="w-full">
+                  <p className=" text-gray-500 text-sm">Hi Jean,</p>
+                  <h6 className=" font-semibold text-lg text-gray-700 w-full">
+                    Welcome to your {pageTitle}
+                  </h6>
+                </div>
+                <div className="relative flex items-center gap-5 w-full justify-end">
+                  <div className=" group flex justify-end cursor-pointer">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="w-8 h-8"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M2.25 12.76c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.076-4.076a1.526 1.526 0 0 1 1.037-.443 48.282 48.282 0 0 0 5.68-.494c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z"
+                      />
+                    </svg>
+                    <div className=" group-hover:flex absolute top-0 right-0 hidden pt-10 justify-end">
+                      <ChatMenu />
+                    </div>
+                  </div>
+                  <div className=" group flex justify-end cursor-pointer">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
@@ -93,19 +116,24 @@ function MainLayout({
                         d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0"
                       />
                     </svg>
-                    <div className=" group-hover:flex absolute top-0 right-0 w-full hidden pt-10 justify-end">
+                    <div className=" group-hover:flex absolute top-0 right-0 hidden pt-10 justify-end">
                       <NotificationsMenu />
                     </div>
                   </div>
-                  <Link
-                    to="/profile"
-                    className="flex items-center justify-center w-8 h-8 aspect-square rounded-full overflow-hidden"
-                  >
-                    <img
-                      src="/logo512.png"
-                      alt="avatar"
-                      className="w-full h-auto"
-                    />
+                  <Link to="/profile" className="flex items-center">
+                    <div className="flex items-center gap-3 w-full">
+                      <img
+                        src="/logo.png"
+                        alt="avatar"
+                        className="w-10 h-10 aspect-square rounded-full overflow-hidden"
+                      />
+                      <div>
+                        <h6 className=" font-semibold text-dark-500">
+                          Jean Chopra
+                        </h6>
+                        <span className=" text-gray-500 text-sm">Tutor</span>
+                      </div>
+                    </div>
                   </Link>
                 </div>
               </div>

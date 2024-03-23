@@ -18,7 +18,7 @@ export default function LoadingButton({
       className={
         disabled
           ? "w-full flex justify-center bg-gray-300 p-3 px-6 rounded-md text-white"
-          : "w-full flex justify-center  bg-primary_green-500 text-white p-3 px-6 rounded-md hover:bg-transparent hover:border hover:border-primary_green-500 transition-all hover:text-primary_green-500"
+          : "w-full flex justify-center  bg-primary-500 text-white p-3 px-6 rounded-md hover:bg-transparent hover:border hover:border-primary-500 transition-all hover:text-primary-500"
       }
     >
       {isLoading ? (

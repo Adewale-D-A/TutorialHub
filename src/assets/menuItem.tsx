@@ -52,7 +52,7 @@ const navItems = [
         />
       </svg>
     ),
-    hasSubMenu: true,
+    hasSubMenu: false,
     subMenu: [
       {
         url: "#",

@@ -3,3 +3,5 @@ declare module "*.jpeg";
 declare module "*.png";
 declare module "*.svg";
 declare module "*.pdf";
+
+declare module "react-datepicker";
