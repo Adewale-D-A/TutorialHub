@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "sn": 1,
+    "faculty": "Faculty of Engineering",
+    "institution": "Federal University of Technology, Minna"
+  },
+  {
+    "id": 2,
+    "sn": 2,
+    "faculty": "Faculty of Life Science",
+    "institution": "Federal University of Ilorin"
+  }
+]

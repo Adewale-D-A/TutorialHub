@@ -1,0 +1,13 @@
+[
+  {
+    "id": 1,
+    "sn": 1,
+    "created_by": {
+      "name": "Joel Aramide Bisola",
+      "email": "joel.ara@futmina.org"
+    },
+    "category": "Faculty Manager",
+    "permissions": ["delete", "read"],
+    "date_time": { "date": "3rd December, 2023", "time": "12:45" }
+  }
+]

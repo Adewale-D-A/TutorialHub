@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "NunitoSans";
+  src: url("./assets/fonts/NunitoSans-Medium.ttf");
+}
+
+body {
+  color: #101828;
+  font-family: "NunitoSans";
+}
+
+.webkit-sticky {
+  position: -webkit-sticky;
+  position: sticky;
+}
+.bg-gradient {
+  background: linear-gradient(110.23deg, #15632b 18.12%, #25a249 51.44%);
+}
+
+.bg-semi-circle-left {
+  background-image: url(./assets/images/semiCircle2.png);
+  background-repeat: no-repeat;
+  background-position: left;
+  background-size: contain;
+}
+
+.bg-semi-circle-right {
+  background-image: url(./assets/images/semiCircle1.png);
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: contain;
+}
+
+td,
+th {
+  padding: 8px;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+  -webkit-appearance: textfield;
+}
+
+.jamb-loader-img {
+  animation: image_zoom 2s linear 0s infinite forwards;
+  transition: all;
+}
+
+@keyframes image_zoom {
+  0% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

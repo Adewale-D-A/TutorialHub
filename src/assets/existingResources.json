@@ -1,0 +1,38 @@
+[
+  {
+    "sn": 1,
+    "id": 1,
+    "resource_name": "Manage Users",
+    "permissions": {
+      "all": false,
+      "read": true,
+      "create": false,
+      "update": true,
+      "delete": false
+    }
+  },
+  {
+    "sn": 2,
+    "id": 2,
+    "resource_name": "Faculties",
+    "permissions": {
+      "all": true,
+      "read": true,
+      "create": true,
+      "update": true,
+      "delete": true
+    }
+  },
+  {
+    "sn": 3,
+    "id": 3,
+    "resource_name": "Programmes",
+    "permissions": {
+      "all": false,
+      "read": false,
+      "create": true,
+      "update": false,
+      "delete": false
+    }
+  }
+]

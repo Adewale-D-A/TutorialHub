@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "sn": 1,
+    "fullname": "John Doe",
+    "application_id": "FR3AT3322AA",
+    "date_time": { "date": "Today", "time": "12.45PM" },
+    "status": "Pending"
+  },
+  {
+    "id": 2,
+    "sn": 2,
+    "fullname": "John Mayor",
+    "application_id": "RFTA33422222",
+    "date_time": { "date": "3rd December, 2024", "time": "12.45PM" },
+    "status": "Declined"
+  }
+]

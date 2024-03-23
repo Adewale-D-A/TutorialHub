@@ -1,0 +1,13 @@
+[
+  {
+    "id": 1,
+    "sn": 1,
+    "user": {
+      "name": "Joel Aramide Bisola",
+      "email": "joel.ara@futmina.org"
+    },
+    "phone_number": "0706669554654",
+    "role": "DAP",
+    "faculties": ["education", "sciences", "Social Sciences"]
+  }
+]
