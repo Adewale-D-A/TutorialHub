@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { useCallback, useState } from "react";
 
 import MainLayout from "../../../../layouts/mainLayout";
 import supportRequestData from "../../../../assets/supportRequestsDataset.json";
@@ -27,12 +26,6 @@ const breadCrumb = [
   },
 ];
 function AdminDashboard() {
-  const [startDate, setStartDate] = useState(new Date());
-
-  const onDateChange = useCallback((dates: any) => {
-    setStartDate(dates);
-  }, []);
-
   return (
     <MainLayout breadCrumb={breadCrumb}>
       <main className="w-full flex flex-col md:flex-row gap-5 px-5 md:px-10 py-10">

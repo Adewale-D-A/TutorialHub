@@ -1,0 +1,12 @@
+[
+  {
+    "id": 1,
+    "sn": 1,
+    "email": "eniola.o@th.edu.uk",
+    "tutor_meetings": 3,
+    "profile": {
+      "profile_image": "/logo.png",
+      "name": "Eniola Gbowogbowo"
+    }
+  }
+]

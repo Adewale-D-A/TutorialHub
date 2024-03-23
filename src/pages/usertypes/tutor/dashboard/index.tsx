@@ -168,7 +168,10 @@ function TutorDashboard() {
           <div className=" border rounded-lg p-3">
             <div className="py-3 border-y mb-3 flex w-full justify-between">
               <h5 className=" font-semibold text-lg">Upcoming tasks</h5>
-              <Link to={"#"} className=" text-primary-500 text-md">
+              <Link
+                to={"/tutor/my-schedules"}
+                className=" text-primary-500 text-md"
+              >
                 View All
               </Link>
             </div>
