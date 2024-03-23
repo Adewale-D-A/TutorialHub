@@ -1,11 +1,15 @@
 import { useCallback, useState } from "react";
-import DatePicker from "react-datepicker";
+import { DayPicker } from "react-day-picker";
+import "react-day-picker/dist/style.css";
 
-import "react-datepicker/dist/react-datepicker.css";
 import MainLayout from "../../layouts/mainLayout";
 import meetingRecordData from "../../assets/meetingRecordData.json";
-import MeetingsRecordTable from "./meentingRecordTable";
+import MeetingsRecordTable from "./meetingRecordTable";
 import Search from "../../components/filterAndSearch/search";
+import MeetSchules from "../../components/meetSchedule";
+
+import meetSchedules from "../../assets/meetingScheduleDataset.json";
+import upcomingMeetSchedules from "../../assets/upcomingMeetSchduleDataset.json";
 
 const breadCrumb = [
   {
@@ -34,7 +38,7 @@ function Dashboard() {
   return (
     <MainLayout breadCrumb={breadCrumb}>
       <main className="w-full flex gap-5 px-5 md:px-10 py-10">
-        <section className="w-full flex-[.7] flex flex-col gap-5">
+        <section className="w-full flex-[.8] flex flex-col gap-5">
           <div className=" w-full grid grid-cols-1 md:grid-cols-3 justify-center gap-4 items-stretch flex-wrap">
             {[
               {
@@ -131,7 +135,7 @@ function Dashboard() {
               );
             })}
           </div>
-          <div className=" grid grid-cols-1 md:grid-cols-2">
+          <div className=" grid grid-cols-1 md:grid-cols-2 gap-5">
             <div className="w-full border rounded-lg p-3"></div>
             <div className="w-full border rounded-lg p-3"></div>
           </div>
@@ -145,16 +149,26 @@ function Dashboard() {
             <MeetingsRecordTable dataset={meetingRecordData} />
           </div>
         </section>
-        <section className="w-full flex-[.3] border rounded-lg p-3">
-          <h1>Section 2</h1>
-          <div>
-            <DatePicker
-              selected={startDate}
-              onChange={onDateChange}
-              startDate={startDate}
-              // selectsRange
-              inline
-            />
+        <section className="w-full flex-[.2] flex flex-col gap-5">
+          <div className=" border rounded-lg p-3">
+            <div className="w-full flex justify-center">
+              <DayPicker
+                mode="single"
+                selected={startDate}
+                onSelect={onDateChange}
+                // footer={footer}
+              />
+            </div>
+            <div className="py-3 border-y mb-3">
+              <h5 className=" font-semibold text-lg">Today's tasks</h5>
+            </div>
+            <MeetSchules dataset={meetSchedules} />
+          </div>
+          <div className=" border rounded-lg p-3">
+            <div className="py-3 border-y mb-3">
+              <h5 className=" font-semibold text-lg">Upcoming tasks</h5>
+            </div>
+            <MeetSchules dataset={upcomingMeetSchedules} />
           </div>
         </section>
       </main>
