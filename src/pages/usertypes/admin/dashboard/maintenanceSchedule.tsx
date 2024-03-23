@@ -1,23 +1,17 @@
-import UsersCount from "./usersCount";
-import userCountDataset from "../../assets/userCountDataset.json";
 import { Link } from "react-router-dom";
 
 interface props {
   dataset: {
     id: string;
-    meet_title: string;
+    title: string;
+    date: string;
     time: string;
     location: string;
-    participants: {
-      id: string;
-      user: string;
-      profile: string;
-    }[];
     can_reschedule: boolean;
   }[];
 }
 
-export default function MeetSchedules({ dataset }: props) {
+export default function MaintenanceSchedule({ dataset }: props) {
   return (
     <div className="flex flex-col gap-6">
       {dataset?.map((item) => (
@@ -37,12 +31,34 @@ export default function MeetSchedules({ dataset }: props) {
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"
+                d="M21.75 6.75a4.5 4.5 0 0 1-4.884 4.484c-1.076-.091-2.264.071-2.95.904l-7.152 8.684a2.548 2.548 0 1 1-3.586-3.586l8.684-7.152c.833-.686.995-1.874.904-2.95a4.5 4.5 0 0 1 6.336-4.486l-3.276 3.276a3.004 3.004 0 0 0 2.25 2.25l3.276-3.276c.256.565.398 1.192.398 1.852Z"
+              />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M4.867 19.125h.008v.008h-.008v-.008Z"
               />
             </svg>
-            <span className="font-semibold text-dark-500">
-              {item?.meet_title}
-            </span>
+
+            <span className="font-semibold text-dark-500">{item?.title}</span>
+          </div>
+          <div className="flex items-center gap-1">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-5 h-5"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5"
+              />
+            </svg>
+
+            <span>{item?.date}</span>
           </div>
           <div className="flex items-center gap-1">
             <svg
@@ -84,7 +100,6 @@ export default function MeetSchedules({ dataset }: props) {
               </svg>
               <span>{item?.location}</span>
             </div>
-            <UsersCount dataset={userCountDataset} />
           </div>
           {item?.can_reschedule && (
             <div className="w-full flex justify-end my-2">

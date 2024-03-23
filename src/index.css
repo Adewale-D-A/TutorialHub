@@ -16,22 +16,8 @@ body {
   position: -webkit-sticky;
   position: sticky;
 }
-.bg-gradient {
-  background: linear-gradient(110.23deg, #15632b 18.12%, #25a249 51.44%);
-}
-
-.bg-semi-circle-left {
-  background-image: url(./assets/images/semiCircle2.png);
-  background-repeat: no-repeat;
-  background-position: left;
-  background-size: contain;
-}
-
-.bg-semi-circle-right {
-  background-image: url(./assets/images/semiCircle1.png);
-  background-repeat: no-repeat;
-  background-position: right;
-  background-size: contain;
+.button-gradient {
+  background: linear-gradient(98.41deg, #4568dc 0%, #b06ab3 100%);
 }
 
 td,
@@ -46,7 +32,7 @@ input[type="number"] {
   -webkit-appearance: textfield;
 }
 
-.jamb-loader-img {
+.loader-img {
   animation: image_zoom 2s linear 0s infinite forwards;
   transition: all;
 }

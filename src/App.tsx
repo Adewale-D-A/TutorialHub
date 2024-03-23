@@ -10,6 +10,13 @@ import ChangePassword from "./pages/reset-passoword/change-password";
 import SnackBar from "./components/snackbar";
 import { useAppSelector } from "./stores/hooks";
 import Chat from "./pages/chat";
+import PersistLogin from "./routeProtectors/persistLogin";
+import RedirectHome from "./routeProtectors/redirectHome";
+import Unauthorised from "./pages/unauthorised";
+import RequireAuthorization from "./routeProtectors/requireAuthorization";
+import TutorDashboard from "./pages/usertypes/tutor/dashboard";
+import TuteeDashboard from "./pages/usertypes/tutee/dashboard";
+import AdminDashboard from "./pages/usertypes/admin/dashboard";
 
 function App() {
   const { show, message, isError } = useAppSelector(
@@ -21,16 +28,29 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="*" element={<PageNotFound />} />
-          <Route path="/" element={<Login />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/notifications" element={<Notifications />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/chat" element={<Chat />} />
-          <Route path="/reset-password" element={<ResetPassword />} />
-          <Route
-            path="/change-password/:email/:otp"
-            element={<ChangePassword />}
-          />
+          <Route path="/unauthorised" element={<Unauthorised />} />
+          <Route element={<RedirectHome />}>
+            <Route path="/" element={<Login />} />
+            <Route path="/reset-password" element={<ResetPassword />} />
+            <Route
+              path="/change-password/:email/:otp"
+              element={<ChangePassword />}
+            />
+          </Route>
+          <Route element={<PersistLogin />}>
+            <Route element={<RequireAuthorization allowed_user="tutor" />}>
+              <Route path="/tutor/dashboard" element={<TutorDashboard />} />
+            </Route>
+            <Route element={<RequireAuthorization allowed_user="tutee" />}>
+              <Route path="/tutee/dashboard" element={<TuteeDashboard />} />
+            </Route>
+            <Route element={<RequireAuthorization allowed_user="admin" />}>
+              <Route path="/admin/dashboard" element={<AdminDashboard />} />
+            </Route>
+            <Route path="/notifications" element={<Notifications />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/chat" element={<Chat />} />
+          </Route>
         </Routes>
       </BrowserRouter>
       {<SnackBar show={show} message={message} isError={isError} />}

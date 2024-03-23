@@ -3,9 +3,13 @@ import { Link, useNavigate } from "react-router-dom";
 import TextInput from "../../components/textInput";
 import Password from "../../components/password";
 import LoadingButton from "../../components/button";
+import { useAppDispatch } from "../../stores/hooks";
+import { updateUser } from "../../stores/users/profile";
+import { openSnackbar } from "../../stores/appFunctionality/snackbar";
 
 function Login() {
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -14,7 +18,28 @@ function Login() {
   const Login = useCallback(
     (e: SyntheticEvent) => {
       e.preventDefault();
-      navigate("/dashboard");
+      const usertype = email.split("@")[0];
+      if (
+        usertype === "admin" ||
+        usertype === "tutor" ||
+        usertype === "tutee"
+      ) {
+        navigate(`/${usertype}/dashboard`);
+        dispatch(
+          updateUser({
+            username: "Anonymous",
+            usertype: usertype,
+            email: email,
+          })
+        );
+      } else {
+        dispatch(
+          openSnackbar({
+            message: "Email or password is not correct",
+            isError: true,
+          })
+        );
+      }
     },
     [email, password]
   );
