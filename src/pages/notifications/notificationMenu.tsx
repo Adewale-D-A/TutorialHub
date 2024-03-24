@@ -31,20 +31,20 @@ function NotificationsMenu() {
           {
             id: 1,
             read: false,
-            status: "Declined",
-            notification_type: "request",
-            notification_type_title: "Request Denied",
-            title: "Civil Engineering",
+            status: "approved",
+            notification_type: "Mail",
+            notification_type_title: "A new request",
+            title: "Schedule",
             date: "2min ago",
           },
           {
             id: 2,
             read: true,
-            status: "Mail",
+            status: "approved",
             notification_type: "Mail",
-            notification_type_title: "Mail Received",
-            title: "Director of Admissions",
-            date: "12/09/2023",
+            notification_type_title: "A new time",
+            title: "Schedule",
+            date: "10min ago",
           },
         ].map((preview) => {
           return (

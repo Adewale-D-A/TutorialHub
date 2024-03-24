@@ -7,6 +7,10 @@ import Search from "../../../../components/filterAndSearch/search";
 import upcomingMeetSchedules from "../../../../assets/maintenanceScheduleDataset.json";
 import SupportRequests from "./supportRequest";
 import MaintenanceSchedule from "./maintenanceSchedule";
+import Select from "../../../../components/select";
+import { useState } from "react";
+import BarChart from "../../../../components/charts/barChart";
+import { PieChart } from "../../../../components/charts/pieChart";
 
 const breadCrumb = [
   {
@@ -26,123 +30,257 @@ const breadCrumb = [
   },
 ];
 function AdminDashboard() {
+  const [meetStatisticPeriod, setMeetStatisticsPeriod] = useState("12");
+
   return (
     <MainLayout breadCrumb={breadCrumb}>
-      <main className="w-full flex flex-col md:flex-row gap-5 px-5 md:px-10 py-10">
+      <main className="w-full flex flex-col gap-5 px-5 md:px-10 py-10">
         <section className="w-full flex-[.8] flex flex-col gap-5">
-          <div className=" w-full grid grid-cols-1 md:grid-cols-3 justify-center gap-4 items-stretch flex-wrap">
+          <div className=" w-full grid grid-cols-1 md:grid-cols-3 justify-center gap-10 items-stretch flex-wrap">
             {[
               {
                 id: 1,
-                label: "Tutees",
-                icon: (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={1.5}
-                    stroke="currentColor"
-                    className="w-8 h-8 text-secondary-500"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z"
-                    />
-                  </svg>
-                ),
-                value: 50,
+                label: "Total Tutees",
+                value: 2420,
+                isRise: true,
+                percentage_change: 5,
+                url: "#",
+                url_label: "Manage",
               },
               {
                 id: 2,
-                label: "Meetings",
-                icon: (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={1.5}
-                    stroke="currentColor"
-                    className="w-8 h-8 text-[#12B76A]"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M6.429 9.75 2.25 12l4.179 2.25m0-4.5 5.571 3 5.571-3m-11.142 0L2.25 7.5 12 2.25l9.75 5.25-4.179 2.25m0 0L21.75 12l-4.179 2.25m0 0 4.179 2.25L12 21.75 2.25 16.5l4.179-2.25m11.142 0-5.571 3-5.571-3"
-                    />
-                  </svg>
-                ),
-                value: 115,
+                label: "Total Tutors",
+                value: 2420,
+                isRise: false,
+                percentage_change: 2,
+                url: "#",
+                url_label: "Manage",
               },
               {
-                id: 3,
-                label: "Your Rating",
-                icon: (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={1.5}
-                    stroke="currentColor"
-                    className="w-8 h-8 text-[#F79009]"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z"
-                    />
-                  </svg>
-                ),
-                value: 8,
+                id: 1,
+                label: "Total Meetings",
+                value: 2420,
+                isRise: true,
+                percentage_change: 5,
+                url: "/admin/meeting-records",
+                url_label: "View records",
               },
             ].map((item) => {
               return (
                 <div
                   key={item?.id}
-                  className="w-full justify-between bg-white flex items-center rounded-md text-dark-500 p-5 shadow-md border"
+                  className="w-full rounded-lg p-5 shadow-2xl flex flex-col gap-2"
                 >
-                  <div className="flex flex-col gap-2">
-                    <span className=" text-gray-500">{item?.label}</span>{" "}
-                    {item?.id === 3 ? (
-                      <div className="flex items-start gap-1">
-                        <h4 className=" text-5xl font-semibold mb-3">
-                          {item?.value}
-                          <span className=" text-gray-300">/</span>{" "}
-                        </h4>
-                        <span className=" text-gray-300 text-xl font-semibold">
-                          10
-                        </span>
-                      </div>
-                    ) : (
-                      <h4 className=" text-5xl font-semibold mb-3">
-                        {item?.value}
-                      </h4>
-                    )}
+                  <div className="flex justify-between items-center w-full">
+                    <h5 className=" text-xl font-semibold">{item?.label}</h5>
+                    <Link
+                      to={item?.url}
+                      className=" text-primary-500 font-semibold bg-primary-500/10 rounded-xl p-2"
+                    >
+                      {item?.url_label}
+                    </Link>
                   </div>
-                  <span className=" p-3 bg-gray-200/20 text-secondary-500 rounded-full aspect-square border border-secondary-500/20">
-                    {item?.icon}
-                  </span>
+                  <div className=" grid grid-cols-2">
+                    <div className=" flex flex-col gap-3 justify-center">
+                      <h5 className=" text-4xl font-semibold">{item?.value}</h5>
+                      <div className="flex items-center gap-4">
+                        <div
+                          className={`w-fit flex items-center p-1 px-3 ${
+                            item?.isRise
+                              ? "text-green-600 bg-green-600/10"
+                              : "text-red-600 bg-red-600/10"
+                          }  rounded-lg`}
+                        >
+                          {item?.isRise ? (
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              strokeWidth={1.5}
+                              stroke="currentColor"
+                              className="w-4 h-4"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M8.25 6.75 12 3m0 0 3.75 3.75M12 3v18"
+                              />
+                            </svg>
+                          ) : (
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              strokeWidth={1.5}
+                              stroke="currentColor"
+                              className="w-4 h-4"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3"
+                              />
+                            </svg>
+                          )}
+                          <span className=" text-xs">
+                            {item?.percentage_change}%
+                          </span>
+                        </div>
+                        <p className=" text-gray-500">vs last session</p>
+                      </div>
+                    </div>
+                    <div>
+                      {item?.isRise ? (
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth={0.5}
+                          stroke="currentColor"
+                          className="w-full h-auto text-green-500 opacity-40"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941"
+                          />
+                        </svg>
+                      ) : (
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth={0.5}
+                          stroke="currentColor"
+                          className="w-full h-auto text-red-500 opacity-40"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M2.25 6 9 12.75l4.286-4.286a11.948 11.948 0 0 1 4.306 6.43l.776 2.898m0 0 3.182-5.511m-3.182 5.51-5.511-3.181"
+                          />
+                        </svg>
+                      )}
+                    </div>
+                  </div>
                 </div>
               );
             })}
           </div>
-          <div className=" grid grid-cols-1 md:grid-cols-2 gap-5">
-            <div className="w-full border rounded-lg p-3"></div>
-            <div className="w-full border rounded-lg p-3"></div>
-          </div>
-          <div className="w-full border rounded-2xl">
-            <div className="flex items-center w-full justify-between px-3 my-4">
-              <h3 className=" text-3xl font-semibold">Support Requests</h3>
-              <div className="">
-                <Search placeholder="Search" id="search" label="" />
+          <div className="w-full flex flex-col md:flex-row gap-5">
+            <div className="w-full border rounded-lg p-3 flex-1 md:flex-[0.8]">
+              <div className="flex justify-between items-center w-full">
+                <h5 className=" text-2xl">System Usage</h5>
+                <div className=" max-w-40">
+                  <Select
+                    id="meet-statistics-period"
+                    value={meetStatisticPeriod}
+                    setValue={setMeetStatisticsPeriod}
+                  >
+                    {Array.from({ length: 12 }, (_, index) => (
+                      <option key={index} value={`${index}`}>
+                        {index + 1} months
+                      </option>
+                    ))}
+                  </Select>
+                </div>
+              </div>
+              <div className=" w-full flex justify-center">
+                <BarChart
+                  data={{
+                    labels: [
+                      "Jan",
+                      "Feb",
+                      "Mar",
+                      "Apr",
+                      "May",
+                      "Jun",
+                      "Jul",
+                      "Aug",
+                      "Sep",
+                      "Oct",
+                      "Nov",
+                      "Dec",
+                    ],
+                    datasets: [
+                      {
+                        label: "Tutees",
+                        data: [
+                          600, 43, 13, 545, 92, 44, 343, 21, 434, 42, 543, 212,
+                        ],
+                        backgroundColor: "rgba(97, 114, 243, 1)",
+                      },
+                      {
+                        label: "Tutor",
+                        data: [
+                          88, 56, 234, 545, 92, 218, 42, 21, 332, 42, 776, 21,
+                        ],
+                        backgroundColor: "rgba(53, 162, 235, 0.5)",
+                      },
+                    ],
+                  }}
+                />
               </div>
             </div>
-            <SupportRequests dataset={supportRequestData} />
+            <div className="w-full border rounded-lg p-3 flex-1 md:flex-[0.2]">
+              <div className="w-full p-3">
+                <div className="flex justify-between items-center w-full">
+                  <h5 className=" text-2xl">Users Satisfaction</h5>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="w-6 h-6"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z"
+                    />
+                  </svg>
+                </div>
+                <div className="w-full border-t mt-3">
+                  <PieChart
+                    data={{
+                      labels: ["High", "Low"],
+                      datasets: [
+                        {
+                          label: "Tutees Performace",
+                          data: [80, 20],
+                          backgroundColor: [
+                            "rgba(97, 114, 243, 1)",
+                            "rgba(224, 234, 255, 1)",
+                          ],
+                          borderColor: [
+                            "rgba(224, 234, 255, 1)",
+                            "rgba(97, 114, 243, 1)",
+                          ],
+                          borderWidth: 1,
+                        },
+                      ],
+                    }}
+                  />
+                </div>
+              </div>
+            </div>
           </div>
         </section>
-        <section className="w-full flex-[.2] flex flex-col gap-5">
-          <div className=" border rounded-lg p-3">
-            <div className="py-3 border-y mb-3 flex w-full justify-between">
+        <section className="w-full flex flex-col md:flex-row gap-5">
+          <div className="flex-1 md:flex-[0.8]">
+            <div className="w-full border rounded-2xl">
+              <div className="flex items-center w-full justify-between px-3 my-4">
+                <h3 className=" text-3xl font-semibold">Support Requests</h3>
+                <div className="">
+                  <Search placeholder="Search" id="search" label="" />
+                </div>
+              </div>
+              <SupportRequests dataset={supportRequestData} />
+            </div>
+          </div>
+          <div className=" border rounded-lg p-3 flex-1 md:flex-[0.2]">
+            <div className="py-3 border-b mb-3 flex w-full justify-between">
               <h5 className=" font-semibold text-lg">Upcoming</h5>
               <Link to={"#"} className=" text-primary-500 text-md">
                 View All

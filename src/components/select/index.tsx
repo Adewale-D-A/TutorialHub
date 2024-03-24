@@ -1,10 +1,10 @@
-import React, { ChangeEvent } from "react";
+import React from "react";
 
 interface Props {
   children: React.ReactNode;
   value: string;
   setValue: Function;
-  label: string;
+  label?: string;
   isRequired?: boolean;
   id: string;
 }
@@ -19,9 +19,11 @@ const Select: React.FC<Props> = ({
 }) => {
   return (
     <div className="w-full">
-      <label htmlFor={id} className=" font-medium">
-        {label}
-      </label>
+      {label && (
+        <label htmlFor={id} className=" font-medium">
+          {label}
+        </label>
+      )}
       <select
         id={id}
         title={label}

@@ -1,6 +1,5 @@
 import { Fragment, useCallback } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import { useNavigate } from "react-router-dom";
 
 const AddScheduleSuccess = ({
   openModal,
@@ -9,11 +8,8 @@ const AddScheduleSuccess = ({
   openModal: boolean;
   setOpenModal: Function;
 }) => {
-  const navigate = useNavigate();
-
   const handleClose = useCallback(() => {
     setOpenModal(false);
-    navigate("/tutee/dashboard");
   }, []);
 
   return (

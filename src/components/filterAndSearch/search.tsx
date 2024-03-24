@@ -1,5 +1,5 @@
 interface Props {
-  label: string;
+  label?: string;
   placeholder: string;
   id: string;
 }

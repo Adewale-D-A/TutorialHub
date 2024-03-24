@@ -23,7 +23,7 @@ export default function MyTutee() {
       <main className="w-full flex flex-col justify-center items-center gap-5 px-5 md:px-10 py-10">
         <div className="w-full max-w-screen-xl rounded-2xl border p-5">
           <h1 className="text-3xl font-semibold mb-5 w-full border-b py-5">
-            My Tutee and Performace
+            My Tutee and Performance
           </h1>
           <div className="w-full gap-5 flex flex-col ">
             {[

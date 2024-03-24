@@ -48,7 +48,7 @@ function FullMenuView() {
         <div className=" flex justify-between items-center mt-5">
           <div className="flex items-center w-full">
             <Link
-              to={"/dashboard"}
+              to={`/${usertype}/dashboard`}
               className="w-full flex items-center justify-center h-10 aspect-square rounded-full overflow-hidden"
             >
               <img
@@ -63,7 +63,7 @@ function FullMenuView() {
               type="button"
               title="toggle-bar"
               onClick={() => toggleMenu()}
-              className=""
+              className=" p-2 bg-red-700/10 rounded-full"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -71,12 +71,12 @@ function FullMenuView() {
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className=" w-8 h-8 text-gray-700 hover:text-primary_green-500 transition-all cursor-pointer"
+                className=" w-8 h-8 text-red-700 hover:text-primary_green-500 transition-all cursor-pointer"
               >
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  d="M3.75 6.75h16.5M3.75 12h16.5M12 17.25h8.25"
+                  d="M6 18 18 6M6 6l12 12"
                 />
               </svg>
             </button>

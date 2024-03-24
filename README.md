@@ -29,6 +29,10 @@
       <td>react-helmet-async</td>
       <td>Meta tags and title attributes</td>
     </tr>
+    <tr>
+      <td>chart.js react-chartjs-2</td>
+      <td>Charts UI <a href="https://react-chartjs-2.js.org/examples/doughnut-chart">DOCUMENTATION</a></td>
+    </tr>
   </table>
 
 > mime types documentation : <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types">MIME TYPES</a>

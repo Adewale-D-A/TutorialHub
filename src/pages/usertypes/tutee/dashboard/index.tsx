@@ -8,6 +8,11 @@ import MainLayout from "../../../../layouts/mainLayout";
 import meetSchedules from "../../../../assets/meetingScheduleDataset.json";
 import tuteeUpcomingMeetSchedules from "../../../../assets/tuteeUpcomingMeetSchedule.json";
 import MeetSchedules from "../../../../components/meetSchedule";
+import BarActivities from "../../../../components/activitiesCharter/barActivities";
+import DoughnutActivities from "../../../../components/activitiesCharter/doughnutActivies";
+import AddNewSchedule from "../my-schedule/addScheduleModal";
+import Search from "../../../../components/filterAndSearch/search";
+import { PieChart } from "../../../../components/charts/pieChart";
 
 const breadCrumb = [
   {
@@ -28,9 +33,14 @@ const breadCrumb = [
 ];
 function TuteeDashboard() {
   const [startDate, setStartDate] = useState(new Date());
+  const [openAddSchedule, setOpenAddSchedule] = useState(false);
 
   const onDateChange = useCallback((dates: any) => {
     setStartDate(dates);
+  }, []);
+
+  const handleAddSchedule = useCallback(() => {
+    setOpenAddSchedule(true);
   }, []);
 
   return (
@@ -134,9 +144,145 @@ function TuteeDashboard() {
             })}
           </div>
           <div className=" grid grid-cols-1 md:grid-cols-2 gap-5">
-            <div className="w-full border rounded-lg p-3"></div>
-            <div className="w-full border rounded-lg p-3"></div>
-            <div className="w-full border rounded-lg p-3"></div>
+            <div className="w-full border rounded-lg">
+              <BarActivities increment={3.4} title="Hours Activity" />
+            </div>
+            <div className="w-full border rounded-lg ">
+              <div className="w-full border-t mt-3">
+                <DoughnutActivities
+                  title="Course Statistics"
+                  book_description="Need to book a meeting with your personal tutor?"
+                  button_label="Book here"
+                  percentages={[
+                    {
+                      id: "1",
+                      value: 65,
+                      label: "Done",
+                      text_color: "text-[#12B76A]",
+                    },
+                    {
+                      id: "2",
+                      value: 25,
+                      label: "In progress",
+                      text_color: " text-[#6172F3]",
+                    },
+                    {
+                      id: "3",
+                      value: 10,
+                      label: "To do",
+                      text_color: "text-[#F79009]",
+                    },
+                  ]}
+                  clickHandler={() => handleAddSchedule()}
+                />
+              </div>
+            </div>
+            <div className="w-full border rounded-lg">
+              <div className="w-full p-3">
+                <div className="flex justify-between items-center w-full">
+                  <h5 className=" text-2xl">Assessment Progress</h5>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="w-6 h-6"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z"
+                    />
+                  </svg>
+                </div>
+
+                <div className="w-full border-t mt-3 py-4 flex flex-col gap-5">
+                  <div className="flex flex-col gap-4">
+                    {[
+                      {
+                        id: 1,
+                        pecentage: 80,
+                        title: "Machine Learning",
+                        tasks: 10,
+                        backgroundColor: [
+                          "rgba(97, 114, 243, 1)",
+                          "rgba(224, 234, 255, 1)",
+                        ],
+                      },
+                      {
+                        id: 2,
+                        pecentage: 50,
+                        title: "Machine Learning",
+                        tasks: 14,
+                        backgroundColor: [
+                          "rgba(164, 188, 253, 1)",
+                          "rgba(224, 234, 255, 1)",
+                        ],
+                      },
+                    ].map((item) => (
+                      <div
+                        key={item?.id}
+                        className="grid grid-cols-2 border-b pb-4"
+                      >
+                        <div className=" max-h-44">
+                          <PieChart
+                            data={{
+                              labels: ["High", "Low"],
+                              datasets: [
+                                {
+                                  label: "Tutees Performace",
+                                  data: [
+                                    item?.pecentage,
+                                    100 - item?.pecentage,
+                                  ],
+                                  backgroundColor: item?.backgroundColor,
+                                  borderColor: [
+                                    "rgba(224, 234, 255, 1)",
+                                    "rgba(97, 114, 243, 1)",
+                                  ],
+                                  borderWidth: 1,
+                                },
+                              ],
+                            }}
+                          />
+                        </div>
+                        <div className="w-full flex items-center gap-3 justify-between">
+                          <div className="flex flex-col gap-3">
+                            <h6 className=" text-2xl">{item?.title}</h6>
+                            <span className=" text-gray-500">
+                              {item?.tasks} Tasks
+                            </span>
+                          </div>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth={1.5}
+                            stroke="currentColor"
+                            className="w-6 h-6  text-gray-700"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="m8.25 4.5 7.5 7.5-7.5 7.5"
+                            />
+                          </svg>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="w-full flex justify-between items-center gap-3 p-3 bg-primary-500/10 rounded-2xl">
+                    <h3 className="w-full text-2xl text-gray-800">
+                      Want to learn something?
+                    </h3>
+                    <div className=" max-w-56">
+                      <Search placeholder="Find course" id="find-course" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
             <div className="w-full border rounded-lg p-3"></div>
           </div>
         </section>
@@ -166,6 +312,10 @@ function TuteeDashboard() {
           </div>
         </section>
       </main>
+      <AddNewSchedule
+        openModal={openAddSchedule}
+        setOpenModal={setOpenAddSchedule}
+      />
     </MainLayout>
   );
 }
