@@ -11,6 +11,9 @@ import meetSchedules from "../../../../assets/meetingScheduleDataset.json";
 import upcomingMeetSchedules from "../../../../assets/upcomingMeetSchduleDataset.json";
 import MeetingsRecordTable from "./meetingRecordTable";
 import MeetSchedules from "../../../../components/meetSchedule";
+import AddNewSchedule from "../my-schedule/addScheduleModal";
+import BarActivities from "../../../../components/activitiesCharter/barActivities";
+import DoughnutActivities from "../../../../components/activitiesCharter/doughnutActivies";
 
 const breadCrumb = [
   {
@@ -31,9 +34,14 @@ const breadCrumb = [
 ];
 function TutorDashboard() {
   const [startDate, setStartDate] = useState(new Date());
+  const [openAddSchedule, setOpenAddSchedule] = useState(false);
 
   const onDateChange = useCallback((dates: any) => {
     setStartDate(dates);
+  }, []);
+
+  const handleAddSchedule = useCallback(() => {
+    setOpenAddSchedule(true);
   }, []);
 
   return (
@@ -137,17 +145,48 @@ function TutorDashboard() {
             })}
           </div>
           <div className=" grid grid-cols-1 md:grid-cols-2 gap-5">
-            <div className="w-full border rounded-lg p-3"></div>
-            <div className="w-full border rounded-lg p-3"></div>
+            <div className="w-full border rounded-lg">
+              <BarActivities increment={3.4} title="Tutee Meetings" />
+            </div>
+            <div className="w-full border rounded-lg ">
+              <DoughnutActivities
+                title="Tutee Performance"
+                book_description="Need to book a meeting with your tutees?"
+                button_label="Book here"
+                percentages={[
+                  {
+                    id: "1",
+                    value: 50,
+                    label: "High",
+                    text_color: "text-[#12B76A]",
+                  },
+                  {
+                    id: "2",
+                    value: 20,
+                    label: "Low",
+                    text_color: "text-[#F79009]",
+                  },
+                  {
+                    id: "3",
+                    value: 30,
+                    label: "Average",
+                    text_color: "text-[#6172F3]",
+                  },
+                ]}
+                clickHandler={() => handleAddSchedule()}
+              />
+            </div>
           </div>
           <div className="w-full border rounded-2xl">
             <div className="flex items-center w-full justify-between px-3 my-4">
               <h3 className=" text-3xl font-semibold">Meeting Records</h3>
               <div className="">
-                <Search placeholder="Search" id="search" label="" />
+                <Search placeholder="Search" id="search" />
               </div>
             </div>
-            <MeetingsRecordTable dataset={meetingRecordingDataset} />
+            <div className=" p-3">
+              <MeetingsRecordTable dataset={meetingRecordingDataset} />
+            </div>
           </div>
         </section>
         <section className="w-full flex-[.2] flex flex-col gap-5">
@@ -168,7 +207,10 @@ function TutorDashboard() {
           <div className=" border rounded-lg p-3">
             <div className="py-3 border-y mb-3 flex w-full justify-between">
               <h5 className=" font-semibold text-lg">Upcoming tasks</h5>
-              <Link to={"#"} className=" text-primary-500 text-md">
+              <Link
+                to={"/tutor/my-schedules"}
+                className=" text-primary-500 text-md"
+              >
                 View All
               </Link>
             </div>
@@ -176,6 +218,11 @@ function TutorDashboard() {
           </div>
         </section>
       </main>
+
+      <AddNewSchedule
+        openModal={openAddSchedule}
+        setOpenModal={setOpenAddSchedule}
+      />
     </MainLayout>
   );
 }

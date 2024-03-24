@@ -77,7 +77,7 @@ function MainLayout({
               <div className="w-full flex justify-between p-5">
                 <div className="w-full">
                   <p className=" text-gray-500 text-sm">Hi Jean,</p>
-                  <h6 className=" font-semibold text-lg text-gray-700 w-full">
+                  <h6 className=" font-semibold text-lg text-gray-700 w-full hidden md:block">
                     Welcome to your {pageTitle}
                   </h6>
                 </div>

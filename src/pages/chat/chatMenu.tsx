@@ -31,10 +31,10 @@ function ChatMenu() {
           {
             id: 1,
             read: false,
-            status: "Declined",
-            notification_type: "request",
-            notification_type_title: "Request Denied",
-            title: "Civil Engineering",
+            status: "approved",
+            notification_type: "Mail",
+            notification_type_title: "New Chat",
+            title: "Felix message",
             date: "2min ago",
           },
           {
@@ -42,8 +42,8 @@ function ChatMenu() {
             read: true,
             status: "Mail",
             notification_type: "Mail",
-            notification_type_title: "Mail Received",
-            title: "Director of Admissions",
+            notification_type_title: "Chat media",
+            title: "Habib sent a file",
             date: "12/09/2023",
           },
         ].map((preview) => {

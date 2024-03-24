@@ -35,36 +35,23 @@ function Chat() {
             {[
               {
                 id: 1,
-                read: false,
-                status: "Declined",
-                notification_type: "request",
-                notification_type_title: "Request Denied",
-                title: "Civil Engineering",
-                message:
-                  "Your academic requirements changes for Civil Engineering has been Denied. Please check your approval status page for updates.",
-                date: "2min ago",
-              },
-              {
-                id: 2,
-                read: false,
-                status: "Approved",
-                notification_type: "request",
-                notification_type_title: "Request Successfully Created",
-                title: "Business Administration",
-                message:
-                  "Your academic requirements changes for Business Administration has been sent out for approval, Please check your approval status page for updates.",
-                date: "12/09/2023",
-              },
-              {
-                id: 2,
-                read: false,
+                read: true,
                 status: "Mail",
                 notification_type: "Mail",
-                notification_type_title: "Mail Received",
-                title: "Director of Admissions",
-                message:
-                  "Kindly be reminded that the cut-off date for uploading programmes entry requirement changes for 2024 is 31st Octob...",
+                notification_type_title: "Chat media",
+                title: "Yakub messaged you",
+                date: "3 mins ago",
+                message: "Yakub's message to you",
+              },
+              {
+                id: 1,
+                read: true,
+                status: "Mail",
+                notification_type: "Mail",
+                notification_type_title: "Chat media",
+                title: "Habib sent a file",
                 date: "12/09/2023",
+                message: "Habib's message to you",
               },
             ].map((notification) => (
               <div

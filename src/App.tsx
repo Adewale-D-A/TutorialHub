@@ -2,7 +2,6 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import PageNotFound from "./pages/404";
 import Login from "./pages/login";
-import Dashboard from "./pages/dashboard";
 import Notifications from "./pages/notifications";
 import Profile from "./pages/profile";
 import ResetPassword from "./pages/reset-passoword";
@@ -17,6 +16,12 @@ import RequireAuthorization from "./routeProtectors/requireAuthorization";
 import TutorDashboard from "./pages/usertypes/tutor/dashboard";
 import TuteeDashboard from "./pages/usertypes/tutee/dashboard";
 import AdminDashboard from "./pages/usertypes/admin/dashboard";
+import MyTutee from "./pages/usertypes/tutor/my-tutees";
+import MySchedule from "./pages/usertypes/tutor/my-schedule";
+import TuteeSchedule from "./pages/usertypes/tutee/my-schedule";
+import TuteesRecording from "./pages/usertypes/admin/tutees-management";
+import TutorsRecording from "./pages/usertypes/admin/tutors-management";
+import MeetingRecords from "./pages/usertypes/admin/meeting-records";
 
 function App() {
   const { show, message, isError } = useAppSelector(
@@ -40,12 +45,27 @@ function App() {
           <Route element={<PersistLogin />}>
             <Route element={<RequireAuthorization allowed_user="tutor" />}>
               <Route path="/tutor/dashboard" element={<TutorDashboard />} />
+              <Route path="/tutor/my-tutees" element={<MyTutee />} />
+              <Route path="/tutor/my-schedules" element={<MySchedule />} />
             </Route>
             <Route element={<RequireAuthorization allowed_user="tutee" />}>
               <Route path="/tutee/dashboard" element={<TuteeDashboard />} />
+              <Route path="/tutee/my-schedules" element={<TuteeSchedule />} />
             </Route>
             <Route element={<RequireAuthorization allowed_user="admin" />}>
               <Route path="/admin/dashboard" element={<AdminDashboard />} />
+              <Route
+                path="/admin/tutees-management"
+                element={<TuteesRecording />}
+              />
+              <Route
+                path="/admin/tutors-management"
+                element={<TutorsRecording />}
+              />
+              <Route
+                path="/admin/meeting-records"
+                element={<MeetingRecords />}
+              />
             </Route>
             <Route path="/notifications" element={<Notifications />} />
             <Route path="/profile" element={<Profile />} />

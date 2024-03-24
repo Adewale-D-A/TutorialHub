@@ -1,7 +1,7 @@
 const navItems = [
   {
     id: 1,
-    url: "/tutor/tutor/dashboard",
+    url: "/tutor/dashboard",
     label: "Home",
     value: "home",
     icon: (
@@ -33,7 +33,7 @@ const navItems = [
   },
   {
     id: 2,
-    url: "/tutor/tutor/courser-management",
+    url: "/tutor/courser-management",
     label: "Course Management",
     value: "courser-management",
     icon: (
@@ -65,7 +65,7 @@ const navItems = [
   },
   {
     id: 3,
-    url: "/tutor/tutor/my-schedules",
+    url: "/tutor/my-schedules",
     label: "My Schedule",
     value: "my-schedule",
     icon: (
@@ -97,7 +97,7 @@ const navItems = [
   },
   {
     id: 4,
-    url: "/tutor/tutor/my-tutees",
+    url: "/tutor/my-tutees",
     label: "My Tutees",
     value: "my-tutees",
     icon: (
@@ -129,7 +129,7 @@ const navItems = [
   },
   {
     id: 5,
-    url: "/tutor/tutor/settings",
+    url: "/tutor/settings",
     label: "Settings",
     value: "settings",
     icon: (
