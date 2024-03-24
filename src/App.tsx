@@ -19,7 +19,9 @@ import AdminDashboard from "./pages/usertypes/admin/dashboard";
 import MyTutee from "./pages/usertypes/tutor/my-tutees";
 import MySchedule from "./pages/usertypes/tutor/my-schedule";
 import TuteeSchedule from "./pages/usertypes/tutee/my-schedule";
-import TuteesRecording from "./pages/usertypes/admin/tutees-management/tuteesRecording";
+import TuteesRecording from "./pages/usertypes/admin/tutees-management";
+import TutorsRecording from "./pages/usertypes/admin/tutors-management";
+import MeetingRecords from "./pages/usertypes/admin/meeting-records";
 
 function App() {
   const { show, message, isError } = useAppSelector(
@@ -55,6 +57,14 @@ function App() {
               <Route
                 path="/admin/tutees-management"
                 element={<TuteesRecording />}
+              />
+              <Route
+                path="/admin/tutors-management"
+                element={<TutorsRecording />}
+              />
+              <Route
+                path="/admin/meeting-records"
+                element={<MeetingRecords />}
               />
             </Route>
             <Route path="/notifications" element={<Notifications />} />

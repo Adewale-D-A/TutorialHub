@@ -98,12 +98,12 @@ const DeleteTuteeRecordingModal = ({
                       </svg>
 
                       <h4 className=" font-semibold text-2xl md:text-3xl text-center">
-                        Remove User?
+                        Remove Record?
                       </h4>
                       <p className=" text-sm text-gray-500 text-center">
-                        Do you want to remove this user account? The account
-                        will be no longer be active and be removed from your
-                        user’s list.{" "}
+                        Do you want to remove this record? The record will be no
+                        longer be available and be removed from your record
+                        list.{" "}
                       </p>
                     </div>
                     <div className="w-full flex flex-col md:flex-row text-center gap-5 md:gap-10">
