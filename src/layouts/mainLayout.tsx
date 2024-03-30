@@ -75,7 +75,7 @@ function MainLayout({
                 </button>
               )}
               <div className="w-full flex justify-between p-5">
-                <div className="w-full">
+                <div className="w-full hidden md:block">
                   <p className=" text-gray-500 text-sm">Hi Jean,</p>
                   <h6 className=" font-semibold text-lg text-gray-700 w-full hidden md:block">
                     Welcome to your {pageTitle}
@@ -89,7 +89,7 @@ function MainLayout({
                       viewBox="0 0 24 24"
                       strokeWidth={1.5}
                       stroke="currentColor"
-                      className="w-8 h-8"
+                      className=" w-5 h-5 md:w-8 md:h-8"
                     >
                       <path
                         strokeLinecap="round"
@@ -108,7 +108,7 @@ function MainLayout({
                       viewBox="0 0 24 24"
                       strokeWidth={1.5}
                       stroke="currentColor"
-                      className="w-8 h-8 "
+                      className=" w-5 h-5 md:w-8 md:h-8"
                     >
                       <path
                         strokeLinecap="round"
@@ -127,7 +127,7 @@ function MainLayout({
                         alt="avatar"
                         className="w-10 h-10 aspect-square rounded-full overflow-hidden"
                       />
-                      <div>
+                      <div className="hidden md:block">
                         <h6 className=" font-semibold text-dark-500">
                           Jean Chopra
                         </h6>

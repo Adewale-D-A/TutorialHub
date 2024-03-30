@@ -22,6 +22,7 @@ import TuteeSchedule from "./pages/usertypes/tutee/my-schedule";
 import TuteesRecording from "./pages/usertypes/admin/tutees-management";
 import TutorsRecording from "./pages/usertypes/admin/tutors-management";
 import MeetingRecords from "./pages/usertypes/admin/meeting-records";
+import ComingSoon from "./pages/coming-soon";
 
 function App() {
   const { show, message, isError } = useAppSelector(
@@ -47,10 +48,15 @@ function App() {
               <Route path="/tutor/dashboard" element={<TutorDashboard />} />
               <Route path="/tutor/my-tutees" element={<MyTutee />} />
               <Route path="/tutor/my-schedules" element={<MySchedule />} />
+              <Route path="/tutor/course-management" element={<ComingSoon />} />
+              <Route path="/tutor/settings" element={<ComingSoon />} />
             </Route>
             <Route element={<RequireAuthorization allowed_user="tutee" />}>
               <Route path="/tutee/dashboard" element={<TuteeDashboard />} />
               <Route path="/tutee/my-schedules" element={<TuteeSchedule />} />
+              <Route path="/tutee/my-course" element={<ComingSoon />} />
+              <Route path="/tutee/community" element={<ComingSoon />} />
+              <Route path="/tutee/settings" element={<ComingSoon />} />
             </Route>
             <Route element={<RequireAuthorization allowed_user="admin" />}>
               <Route path="/admin/dashboard" element={<AdminDashboard />} />
@@ -66,7 +72,10 @@ function App() {
                 path="/admin/meeting-records"
                 element={<MeetingRecords />}
               />
+              <Route path="/admin/schedule" element={<ComingSoon />} />
+              <Route path="/admin/support-requests" element={<ComingSoon />} />
             </Route>
+
             <Route path="/notifications" element={<Notifications />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/chat" element={<Chat />} />

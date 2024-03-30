@@ -33,9 +33,9 @@ export default function Loader({
       ) : (
         <div className="flex items-center justify-center">
           <img
-            src={"/logo192.png"}
-            className=" w-16 jamb-loader-img"
-            alt="Jamb logo"
+            src={"/logo.png"}
+            className=" w-16 loader-img"
+            alt="TutHub logo"
           />
         </div>
       )}
