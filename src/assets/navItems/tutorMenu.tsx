@@ -33,7 +33,7 @@ const navItems = [
   },
   {
     id: 2,
-    url: "/tutor/courser-management",
+    url: "/tutor/course-management",
     label: "Course Management",
     value: "courser-management",
     icon: (

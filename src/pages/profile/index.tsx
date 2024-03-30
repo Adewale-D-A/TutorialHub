@@ -121,7 +121,7 @@ function Profile() {
           <div className="flex flex-col md:flex-row w-full gap-10 mt-10">
             <div className=" max-w-sm w-full">
               <h4 className=" font-semibold text-xl">Login Details</h4>
-              <p className=" text-gray-500">Modigy your iBASS password</p>
+              <p className=" text-gray-500">Modify your password</p>
             </div>
             <div className=" w-full">
               <div className="w-full max-w-md flex flex-col gap-5">

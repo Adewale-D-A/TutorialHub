@@ -1,3 +1,8 @@
+##### 03.30.2024
+
+> UI mobile responsiveness adjustments
+> coming soon page ui development and integration
+
 ##### 03.24.2024
 
 > Charts addition
