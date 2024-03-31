@@ -147,7 +147,7 @@ function TuteeDashboard() {
             <div className="w-full border rounded-lg">
               <BarActivities increment={3.4} title="Hours Activity" />
             </div>
-            <div className="w-full border rounded-lg ">
+            <div className="w-full border flex-col md:flex-row rounded-lg ">
               <div className="w-full border-t mt-3">
                 <DoughnutActivities
                   title="Course Statistics"
@@ -180,7 +180,7 @@ function TuteeDashboard() {
             <div className="w-full border rounded-lg">
               <div className="w-full p-3">
                 <div className="flex justify-between items-center w-full">
-                  <h5 className=" text-2xl">Assessment Progress</h5>
+                  <h5 className="text-lg md:text-2xl">Assessment Progress</h5>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -223,9 +223,9 @@ function TuteeDashboard() {
                     ].map((item) => (
                       <div
                         key={item?.id}
-                        className="grid grid-cols-2 border-b pb-4"
+                        className="grid grid-cols-1 lg:grid-cols-2 border-b gap-3 pb-4"
                       >
-                        <div className=" max-h-44">
+                        <div className="h-60 md:h-36 flex justify-center md:justify-start">
                           <PieChart
                             data={{
                               labels: ["High", "Low"],
@@ -249,7 +249,9 @@ function TuteeDashboard() {
                         </div>
                         <div className="w-full flex items-center gap-3 justify-between">
                           <div className="flex flex-col gap-3">
-                            <h6 className=" text-2xl">{item?.title}</h6>
+                            <h6 className="text-lg md:text-2xl">
+                              {item?.title}
+                            </h6>
                             <span className=" text-gray-500">
                               {item?.tasks} Tasks
                             </span>
@@ -272,11 +274,11 @@ function TuteeDashboard() {
                       </div>
                     ))}
                   </div>
-                  <div className="w-full flex justify-between items-center gap-3 p-3 bg-primary-500/10 rounded-2xl">
-                    <h3 className="w-full text-2xl text-gray-800">
+                  <div className="w-full flex flex-col md:flex-row justify-between items-center gap-3 p-3 bg-primary-500/10 rounded-2xl">
+                    <h3 className="w-full text-lg md:text-2xl text-gray-800">
                       Want to learn something?
                     </h3>
-                    <div className=" max-w-56">
+                    <div className="w-full md:max-w-56">
                       <Search placeholder="Find course" id="find-course" />
                     </div>
                   </div>

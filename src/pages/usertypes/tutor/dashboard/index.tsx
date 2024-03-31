@@ -178,9 +178,9 @@ function TutorDashboard() {
             </div>
           </div>
           <div className="w-full border rounded-2xl">
-            <div className="flex items-center w-full justify-between px-3 my-4">
-              <h3 className=" text-3xl font-semibold">Meeting Records</h3>
-              <div className="">
+            <div className="flex gap-2 md:items-center w-full flex-col md:flex-row justify-between p-2">
+              <h3 className=" text-lg md:text-3xl">Meeting Records</h3>
+              <div className="w-full md:w-fit">
                 <Search placeholder="Search" id="search" />
               </div>
             </div>

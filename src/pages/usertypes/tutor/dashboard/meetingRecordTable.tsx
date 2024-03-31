@@ -20,7 +20,7 @@ interface tableProps {
 
 export default function MeetingsRecordTable({ dataset }: tableProps) {
   return (
-    <div className=" w-full overflow-x-auto">
+    <div className="text-sm md:text-md w-full overflow-x-auto">
       <table className=" w-full ">
         <thead className="border">
           <tr className=" text-left bg-gray-300/30 text-gray-500">
@@ -38,11 +38,13 @@ export default function MeetingsRecordTable({ dataset }: tableProps) {
                 <td className=" text-gray-500  max-w-xs">{meeting?.sn}</td>
                 <td className=" max-w-xs">
                   <div className="flex items-center gap-2">
-                    <img
-                      src={meeting?.tutee_details?.profile_image}
-                      alt={meeting?.tutee_details?.name}
-                      className="w-6 h-6 overflow-hidden aspect-square"
-                    />
+                    <div className="w-6 h-6 overflow-hidden aspect-square rounded-full">
+                      <img
+                        src={meeting?.tutee_details?.profile_image}
+                        alt={meeting?.tutee_details?.name}
+                        className="w-full h-auto "
+                      />
+                    </div>
                     <div className="flex flex-col">
                       <span>{meeting?.tutee_details?.name}</span>
                       <span className=" text-xs text-gray-500">
@@ -56,19 +58,21 @@ export default function MeetingsRecordTable({ dataset }: tableProps) {
                 </td>
                 <td className=" max-w-xs">
                   <div className="flex items-center gap-3">
-                    <img
-                      src={meeting?.sign_off?.profile_image}
-                      alt={meeting?.sign_off?.position}
-                      className="h-4 w-4 overflow-hidden aspect-square rounded-full"
-                    />
+                    <div className="w-4 h-4 overflow-hidden aspect-square rounded-full">
+                      <img
+                        src={meeting?.sign_off?.profile_image}
+                        alt={meeting?.sign_off?.position}
+                        className="h-4 w-4 "
+                      />
+                    </div>
                     <span>{meeting?.sign_off?.position}</span>
                   </div>
                 </td>
-                <td className=" text-sm flex items-center gap-3">
+                <td className=" text-sm flex items-center h-full justify-center">
                   <Link
                     to="#"
                     title="feedback"
-                    className=" p-3 bg-primary-500/20 text-primary-500 aspect-square rounded-full"
+                    className=" p-2 bg-primary-500/20 text-primary-500 aspect-square rounded-full"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"

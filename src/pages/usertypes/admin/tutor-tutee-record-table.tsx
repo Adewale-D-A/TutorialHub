@@ -40,7 +40,7 @@ export default function TuteesTutorRecording({ dataset }: tableProps) {
   }, []);
 
   return (
-    <div className=" w-full overflow-x-auto">
+    <div className="text-sm md:text-md w-full overflow-x-auto">
       <table className=" w-full ">
         <thead className="border">
           <tr className=" text-left bg-gray-300/30 text-gray-500">
@@ -81,7 +81,7 @@ export default function TuteesTutorRecording({ dataset }: tableProps) {
                       viewBox="0 0 24 24"
                       strokeWidth={1.5}
                       stroke="currentColor"
-                      className="w-6 h-6 text-gray-500 group-hover:scale-125 cursor-pointer transition-all"
+                      className=" w-5 h-5 md:w-6 md:h-6 text-gray-500 group-hover:scale-125 cursor-pointer transition-all"
                     >
                       <path
                         strokeLinecap="round"
@@ -102,7 +102,7 @@ export default function TuteesTutorRecording({ dataset }: tableProps) {
                       viewBox="0 0 24 24"
                       strokeWidth={1.5}
                       stroke="currentColor"
-                      className="w-6 h-6 text-red-500 group-hover:scale-125 cursor-pointer transition-all"
+                      className=" w-5 h-5 md:w-6 md:h-6 text-red-500 group-hover:scale-125 cursor-pointer transition-all"
                     >
                       <path
                         strokeLinecap="round"

@@ -21,14 +21,14 @@ const breadCrumb = [
 function ComingSoon() {
   return (
     <MainLayout breadCrumb={breadCrumb}>
-      <div className="w-full h-screen flex justify-center flex-col gap-5 items-center text-yellow-600">
+      <div className="w-full h-screen flex justify-center flex-col gap-5 items-center text-primary-500">
         <div className=" flex items-center flex-col gap-5">
-          <div className=" flex items-center gap-3">
+          <div className=" flex items-center flex-col md:flex-row gap-3">
             <h1 className=" text-5xl font-bold">COMING SOON</h1>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="currentColor"
-              className="w-10 h-10"
+              className="w-12 h-12 animate-spin md:w-10 md:h-10"
               viewBox="0 0 16 16"
             >
               <path d="M6.705 8.139a.25.25 0 0 0-.288-.376l-1.5.5.159.474.808-.27-.595.894a.25.25 0 0 0 .287.376l.808-.27-.595.894a.25.25 0 0 0 .287.376l1.5-.5-.159-.474-.808.27.596-.894a.25.25 0 0 0-.288-.376l-.808.27z" />

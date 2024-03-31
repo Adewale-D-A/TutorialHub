@@ -1,9 +1,9 @@
 export default function Pagination() {
   return (
-    <div className=" flex justify-between flex-col md:flex-row items-start gap-6 w-full mt-10 md:mt-16">
+    <div className=" text-sm md:text-md flex justify-center md:justify-between flex-col md:flex-row items-start gap-3 md:gap-6 w-full  px-4 mt-10 md:mt-16">
       <button
         type="button"
-        className=" border rounded-md p-3 px-5 hover:border-primary_green-500 transition-all flex gap-3"
+        className="w-full md:w-fit items-center justify-center border rounded-md p-3 px-5 hover:border-primary_green-500 transition-all flex gap-3"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -11,7 +11,7 @@ export default function Pagination() {
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="w-6 h-6"
+          className="w-4 h-4 md:w-6 md:h-6"
         >
           <path
             strokeLinecap="round"
@@ -21,7 +21,7 @@ export default function Pagination() {
         </svg>
         <span>Previous</span>
       </button>
-      <div className="flex gap-2 flex-wrap">
+      <div className="flex gap-2 flex-wrap w-full justify-between md:justify-center">
         {Array.from({ length: 8 }, (_, index) => (
           <span
             key={index}
@@ -33,7 +33,7 @@ export default function Pagination() {
       </div>
       <button
         type="button"
-        className=" border rounded-md p-3 px-5 hover:border-primary_green-500 transition-all flex gap-3"
+        className="w-full md:w-fit items-center justify-center border rounded-md p-3 px-5 hover:border-primary_green-500 transition-all flex gap-3"
       >
         <span>Next</span>
         <svg
@@ -42,7 +42,7 @@ export default function Pagination() {
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="w-6 h-6"
+          className="w-4 h-4 md:w-6 md:h-6"
         >
           <path
             strokeLinecap="round"
