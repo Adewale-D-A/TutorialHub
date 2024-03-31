@@ -48,7 +48,7 @@ function MainLayout({
         <nav className="z-10 fixed left-0 top-0">
           <NavigationMenu />
         </nav>
-        <div className=" w-full absolute top-0 left-0 pl-16 md:pl-24">
+        <div className=" w-full absolute top-0 left-0 pl-0 md:pl-24">
           <div className="w-full webkit-sticky top-0 z-[8] bg-white shadow-md">
             <div className="flex border-b border-gray-200">
               {!fullView && (
@@ -89,7 +89,7 @@ function MainLayout({
                       viewBox="0 0 24 24"
                       strokeWidth={1.5}
                       stroke="currentColor"
-                      className=" w-5 h-5 md:w-8 md:h-8"
+                      className="w-8 h-8"
                     >
                       <path
                         strokeLinecap="round"
@@ -108,7 +108,7 @@ function MainLayout({
                       viewBox="0 0 24 24"
                       strokeWidth={1.5}
                       stroke="currentColor"
-                      className=" w-5 h-5 md:w-8 md:h-8"
+                      className="w-8 h-8"
                     >
                       <path
                         strokeLinecap="round"

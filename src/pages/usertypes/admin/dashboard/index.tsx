@@ -72,10 +72,12 @@ function AdminDashboard() {
                   className="w-full rounded-lg p-5 shadow-2xl flex flex-col gap-2"
                 >
                   <div className="flex justify-between items-center w-full">
-                    <h5 className=" text-xl font-semibold">{item?.label}</h5>
+                    <h5 className=" text-md md:text-xl font-semibold">
+                      {item?.label}
+                    </h5>
                     <Link
                       to={item?.url}
-                      className=" text-primary-500 font-semibold bg-primary-500/10 rounded-xl p-2"
+                      className=" text-sm md:text-md text-primary-500 font-semibold bg-primary-500/10 rounded-xl p-2"
                     >
                       {item?.url_label}
                     </Link>
@@ -83,7 +85,7 @@ function AdminDashboard() {
                   <div className=" grid grid-cols-2">
                     <div className=" flex flex-col gap-3 justify-center">
                       <h5 className=" text-4xl font-semibold">{item?.value}</h5>
-                      <div className="flex items-center gap-4">
+                      <div className="flex items-start md:items-center flex-col md:flex-row gap-2 md:gap-3">
                         <div
                           className={`w-fit flex items-center p-1 px-3 ${
                             item?.isRise
@@ -126,7 +128,9 @@ function AdminDashboard() {
                             {item?.percentage_change}%
                           </span>
                         </div>
-                        <p className=" text-gray-500">vs last session</p>
+                        <p className=" text-gray-500 text-sm md:text-md">
+                          vs last session
+                        </p>
                       </div>
                     </div>
                     <div>
@@ -170,7 +174,7 @@ function AdminDashboard() {
           <div className="w-full flex flex-col md:flex-row gap-5">
             <div className="w-full border rounded-lg p-3 flex-1 md:flex-[0.8]">
               <div className="flex justify-between items-center w-full">
-                <h5 className=" text-2xl">System Usage</h5>
+                <h5 className=" text-xl md:text-2xl">System Usage</h5>
                 <div className=" max-w-40">
                   <Select
                     id="meet-statistics-period"
@@ -225,7 +229,7 @@ function AdminDashboard() {
             <div className="w-full border rounded-lg p-3 flex-1 md:flex-[0.2]">
               <div className="w-full p-3">
                 <div className="flex justify-between items-center w-full">
-                  <h5 className=" text-2xl">Users Satisfaction</h5>
+                  <h5 className=" text-xl md:text-2xl">Users Satisfaction</h5>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -241,7 +245,7 @@ function AdminDashboard() {
                     />
                   </svg>
                 </div>
-                <div className="w-full border-t mt-3">
+                <div className="w-full border-t mt-3 flex justify-center">
                   <PieChart
                     data={{
                       labels: ["High", "Low"],
@@ -269,9 +273,9 @@ function AdminDashboard() {
         </section>
         <section className="w-full flex flex-col md:flex-row gap-5">
           <div className="flex-1 md:flex-[0.8]">
-            <div className="w-full border rounded-2xl">
+            <div className="w-full border rounded-2xl p-3">
               <div className="flex items-center w-full justify-between px-3 my-4">
-                <h3 className=" text-3xl font-semibold">Support Requests</h3>
+                <h5 className=" text-xl md:text-2xl">Support Requests</h5>
                 <div className="">
                   <Search placeholder="Search" id="search" label="" />
                 </div>

@@ -22,10 +22,10 @@ export default function MyTutee() {
     <MainLayout breadCrumb={breadCrumb}>
       <main className="w-full flex flex-col justify-center items-center gap-5 px-5 md:px-10 py-10">
         <div className="w-full max-w-screen-xl rounded-2xl border p-5">
-          <h1 className="text-3xl font-semibold mb-5 w-full border-b py-5">
+          <h3 className=" text-lg md:text-2xl mb-5 w-full border-b py-5">
             My Tutee and Performance
-          </h1>
-          <div className="w-full gap-5 flex flex-col ">
+          </h3>
+          <div className="w-full gap-5 flex flex-col  ">
             {[
               {
                 id: "1",
@@ -48,7 +48,7 @@ export default function MyTutee() {
             ].map((tutee) => (
               <div
                 key={tutee?.id}
-                className="flex items-center gap-4 justify-between"
+                className="flex items-center gap-4 justify-between flex-col md:flex-row border-b pb-3"
               >
                 <div className="flex items-center gap-3 w-full">
                   <img

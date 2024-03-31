@@ -40,7 +40,7 @@ function FullMenuView() {
   return (
     <div
       className={`flex h-screen overflow-y-auto flex-col justify-between gap-10 p-2 md:p-5 transition-all bg-white border-r border-gray-200 ${
-        fullView ? "w-[300px]" : "w-16 md:w-24"
+        fullView ? "w-[300px]" : "hidden md:w-24 md:flex"
       }`}
     >
       {/* nav items section */}

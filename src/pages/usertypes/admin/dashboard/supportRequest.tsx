@@ -15,7 +15,7 @@ interface tableProps {
 
 export default function SupportRequests({ dataset }: tableProps) {
   return (
-    <div className=" w-full overflow-x-auto">
+    <div className="text-sm md:text-md w-full overflow-x-auto">
       <table className=" w-full ">
         <thead className="border">
           <tr className=" text-left bg-gray-300/30 text-gray-500">
@@ -54,7 +54,7 @@ export default function SupportRequests({ dataset }: tableProps) {
                   <Link
                     to="#"
                     title="feedback"
-                    className=" p-3 bg-primary-500/20 text-primary-500 aspect-square rounded-full"
+                    className=" p-2 bg-primary-500/20 text-primary-500 aspect-square rounded-full"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -62,7 +62,7 @@ export default function SupportRequests({ dataset }: tableProps) {
                       viewBox="0 0 24 24"
                       strokeWidth={1.5}
                       stroke="currentColor"
-                      className="w-6 h-6"
+                      className="w-4 h-4"
                     >
                       <path
                         strokeLinecap="round"

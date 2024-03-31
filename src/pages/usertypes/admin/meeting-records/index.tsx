@@ -27,13 +27,13 @@ export default function MeetingRecords() {
     <MainLayout breadCrumb={breadCrumb}>
       <main className="w-full flex flex-col items-center ">
         <div className="w-full max-w-screen-2xl flex flex-col gap-5 my-10 px-5 md:px-10 border rounded-2xl py-5">
-          <div className="flex justify-between w-full items-center">
-            <div>
-              <div className="flex items-center gap-3">
+          <div className="flex justify-between flex-col md:flex-row w-full gap-2 items-start md:items-center">
+            <div className="w-full">
+              <div className=" w-full md:w-fit flex items-center justify-between md:justify-start gap-3">
                 <h4 className=" text-2xl">Meeting Records</h4>
               </div>
             </div>
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 w-full md:w-fit">
               <Search label="Search" placeholder="Search" id="search" />
               <Sort />
             </div>

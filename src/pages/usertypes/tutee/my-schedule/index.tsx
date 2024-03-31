@@ -36,7 +36,9 @@ export default function TuteeSchedule() {
     <MainLayout breadCrumb={breadCrumb}>
       <main className="w-full flex flex-col justify-center items-center gap-5 px-5 md:px-10 py-10">
         <div className="w-full max-w-screen-xl rounded-2xl border p-5">
-          <h1 className="text-3xl font-semibold my-3">Today's Schedule</h1>
+          <h3 className=" text-lg md:text-3xl font-semibold my-3">
+            Today's Schedule
+          </h3>
           <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-5">
             {meetSchedules?.map((item) => (
               <div
@@ -109,7 +111,9 @@ export default function TuteeSchedule() {
           </div>
         </div>
         <div className="w-full max-w-screen-xl rounded-2xl border p-5">
-          <h1 className="text-3xl font-semibold my-3">Upcoming Schedule</h1>
+          <h3 className=" text-lg md:text-3xl font-semibold my-3">
+            Upcoming Schedule
+          </h3>
           <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-5">
             {meetSchedules?.map((item) => (
               <div
