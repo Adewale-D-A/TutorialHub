@@ -35,6 +35,58 @@
     </tr>
   </table>
 
+#### How to build a docker image from the source code and run the app
+
+##### follow the data in the table below provided you are in the same directory as the Dockerfile
+
+ <table>
+    <tr>
+      <th>Task</th>
+      <th>Docker command</th>
+    </tr>
+    <!-- <tr>
+      <td>Build a docker image manually without docker compose</td>
+      <td>docker build -t tuthub-app .</td>
+    </tr> -->
+    <!-- <tr>
+      <td>Run the image locally manually</td>
+      <td>docker run -p 3000:3000 tuthub-app</td>
+    </tr> -->
+    <tr>
+      <td>Build a docker image using docker compose</td>
+      <td>docker-compose build</td>
+    </tr>
+    <tr>
+      <td>Run the image locally</td>
+      <td>docker run -d -p 80:80 --name tuthub-prod tuthub-prod:v1.1.0</td>
+    </tr>
+    <tr>
+      <td>tag Docker image</td>
+      <td>docker tag tuthub-prod:v1.1.0 adewaleda/tuthub:v1.1.0</td>
+    </tr>
+    <tr>
+      <td>push to remote repository</td>
+      <td>docker push adewaleda/tuthub:v1.1.0</td>
+    </tr>
+    <tr>
+      <td>Pull image from DockerHub on server</td>
+      <td>sudo docker pull adewaleda/tuthub:v1.1.0</td>
+    </tr>
+    <tr>
+      <td>stop current running docker image</td>
+      <td>sudo docker stop *Container ID*</td>
+    </tr>
+    <tr>
+      <td>initiate pulled docker image on server</td>
+      <td>sudo docker run -d -p 8081:80 --name tuthub-prod-v1.1.0 *Image ID*</td>
+    </tr>
+    </table>
+
+step 1:
+run **npm install** (to install all the dependencies)
+step 2:
+run **npm start** (start application on port :3000)
+
 > mime types documentation : <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types">MIME TYPES</a>
 
 #### Visit Site
