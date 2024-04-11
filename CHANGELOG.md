@@ -1,3 +1,8 @@
+##### 04.11.2024
+
+> docker files addition
+> readme docker instructions
+
 ##### 03.31.2024
 
 > mobile responsiveness adjustment
